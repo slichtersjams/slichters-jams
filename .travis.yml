@@ -10,7 +10,8 @@ deploy:
   provider: gcs
   acl: public-read
   bucket: "www.slichtersjams.com"
-  local-dir: build
+  file: "build/index.html"
+  # local-dir: build
   skip_cleanup: true
   access_key_id: GOOGLGEIV6NS6ITVMCCD
   secret_access_key:
