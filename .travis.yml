@@ -2,6 +2,9 @@ language: node_js
 node_js:
   - node
 
+before_deply:
+  npm build
+
 deploy:
   provider: gcs
   acl: public-read
