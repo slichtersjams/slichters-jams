@@ -4,11 +4,12 @@ node_js:
 
 before_deploy:
   npm run build
+  ls build
 
 deploy:
   provider: gcs
   acl: public-read
-  bucket: www.slichtersjams.com
+  bucket: "www.slichtersjams.com"
   local-dir: build
   skip_cleanup: true
   access_key_id: GOOGLGEIV6NS6ITVMCCD
