@@ -3,7 +3,7 @@ node_js:
   - node
 
 before_deploy:
-  npm build
+  npm run build
 
 deploy:
   provider: gcs
