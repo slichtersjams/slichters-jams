@@ -1,20 +1,37 @@
-language: node_js
-node_js:
-  - node
+# Use Dockerized infrastructure
+sudo: false
 
-before_deploy:
-  - npm run build
-  - ls build
+language: node_js
+
+node_js:
+- node
+
+
+# Cache our Gcloud SDK between commands
+cache:
+  directories:
+  - "$HOME/google-cloud-sdk/"
+
+env:
+  # Make sure gcloud command is on the path and prevent cloud sdk from prompting user
+  - PATH=$PATH:${HOME}/google-cloud-sdk/bin CLOUDSDK_CORE_DISABLE_PROMPTS=1
+
+before_install:
+# Decrypt our google cloud creds
+- openssl aes-256-cbc -K $encrypted_fa3476454306_key -iv $encrypted_fa3476454306_iv
+  -in client-secret.json.enc -out client-secret.json -d
+
+# Download and install the sdk
+- rm -rf ${HOME}/google-cloud-sdk
+- curl https://sdk.cloud.google.com | bash >/dev/null;
+
+
+# Authenticate gcloud auth tool
+- gcloud auth activate-service-account --key-file client-secret.json
 
 deploy:
-  provider: gcs
-  acl: public-read
-  bucket: "www.slichtersjams.com"
-  # file: "build/index.html"
-  local-dir: build
   skip_cleanup: true
-  access_key_id: GOOGLGEIV6NS6ITVMCCD
-  secret_access_key:
-    secure: LuIasclXYSaihj3Lp6A1AC/Ra3jm9s92zPt8kVHNU5i5XPgPk7bBzHa0YtSKcWbuIKvEW1nrJne15tG6bgXZFDUfK4ib+MW+mFhhw/LQnWoA8d60TxFwzJ73xMDm6fTii1syhY3FZSUsoNwUFn9rpbMjBvrFA4LSvXnzYCkvCgaARCVmBLBAJBnLvvGZg/4bdAvcpfaw5Qm75AmBSC3BIJqipRwpaqLTrkwpr5xGGC8vGbnxpbbUNPeqpYGgYm5ODWYPrKxX7X4/8HXSAFzDhjHNJyRNIgSp8L9Inzd7AmgFLt23gHnqZeR7jViehLm0eb/WIFHFh6XoAw44K3MXF3Pw2mK/ChHMAVj4slokZ1SJIYWoGqKcpeVuIHV1w04+FIXhu7H9tvjRoqXz5MOdnKeCnBjGnj0ke1yfD33Oxg7EzUSZ2BbMXSOU/9mUHdvs/gvA+vNsDyrLQ8tpvk9p/6NutdHxHftSBykE26Ys0+ds9LemyzHo6Qalob2YwGgmG2IEg8OpNMqtJPrhCJDKSRo2RHFYjhCQw0IBFyDWhqmfqOxkaI/i/UqRCM/BbFlXnK6KohlcRo3yzgW9uU+GRN3XajTA9gkeG6D9eQCWH7RGah780EFvxA5juCHQHQKonMdcsU0So/40Q1u/HAtzFhDK4Nxi3GTW4ZSz6RW/SqM=
+  provider: script
+  script: sh scripts/deploy.sh $TRAVIS_BRANCH
   on:
-    repo: slichtersjams/slichters-jams
+    all_branches: true
