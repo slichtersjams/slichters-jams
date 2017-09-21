@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import * as enzyme from 'enzyme';
 import {JamInput} from "./JamInput";
 
