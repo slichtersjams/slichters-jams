@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as enzyme from 'enzyme';
 import * as fetchMock from 'fetch-mock';
-import {JamText} from "./JamText";
+import { JamText } from "./JamText";
 
 const mockJamResponse = 'Some awesome Jam text ffs';
 const jamUrl = 'https://slichters-jams.appspot.com';
