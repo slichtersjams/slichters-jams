@@ -21,6 +21,7 @@ it('should send jam stream with input box when button is clicked', () => {
   // jamInput.find('input').simulate('change', {target: {value: newValue}});
   wrapper.find('button').simulate( 'click');
   // expect(jamInput.find( '.test-results').first().text()).toEqual(newValue);
-  expect(JamInput.prototype.handleSubmit.calledOnce).toBeTruthy();
+  // expect(JamInput.prototype.handleSubmit.calledOnce).toBeTruthy();
+  expect(onSubmitSpy.calledOnce).toBeTruthy();
   onSubmitSpy.restore();
 });
