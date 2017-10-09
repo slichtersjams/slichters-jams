@@ -1,6 +1,6 @@
 import * as React from 'react';
 import './App.css';
-import { JamInput } from './JamInput';
+import { JamInput } from './components/jamInputForm/JamInput';
 
 const logo = require('./logo.svg');
 
