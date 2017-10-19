@@ -8,7 +8,7 @@ export class JamInput extends React.Component<IJamInputProps, IJamInputState> {
   }
   public render() {
     return (
-      <input className="jamInput" placeholder={this.state.jamString}/>
+      <input className="jamInput text-input-default" placeholder={this.state.jamString}/>
     );
   }
 }

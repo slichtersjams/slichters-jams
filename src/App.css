@@ -1,20 +1,88 @@
-.App {
-  text-align: center;
+.gradient {
+    width: 1200px;
+    height: 1024px;
+    padding: 32px;
+    background-image: linear-gradient(305deg, #64e8de, #64bbe8 31%, #4c5dda, #8a64e8);
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.let-s-jam {
+    width: 190px;
+    height: 71px;
+    font-family: Oswald;
+    font-size: 48px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: 2px;
+    text-align: center;
+    color: #ffffff;
 }
 
-.App-header {
-  background-color: #222;
-  height: 180px;
-  padding: 20px;
-  color: white;
+.search-anything {
+    width: 470px;
+    height: 16px;
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #ffffff;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.text-input-rectangle {
+    width: 400px;
+    height: 40px;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.text-input-default {
+    width: 363px;
+    height: 30px;
+    opacity: 0.8;
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: normal;
+    font-style: italic;
+    font-stretch: normal;
+    line-height: 2.14;
+    letter-spacing: normal;
+    text-align: left;
+    color: #ffffff;
+    background-color: transparent;
+    border-style: none;
+    padding-left: 10px;
+    padding-top: 3px;
+}
+
+.search-rectangle {
+    width: 200px;
+    height: 40px;
+    border-radius: 100px;
+    background-color: #ffffff;
+    text-align: center;
+}
+
+.search-button {
+    width: 100%;
+    height: 100%;
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #3574bc;
+    background-color: transparent;
+    border-style: none;
+}
+
+input {
+    outline: none;
 }
