@@ -1,39 +1,37 @@
-.gradient {
-    width: 1200px;
-    height: 1024px;
-    padding: 32px;
+.App {
+    height: 100vh;
+    background-image: -webkit-linear-gradient(145deg, #64e8de, #64bbe8 31%, #4c5dda, #8a64e8);
+    background-image: -o-linear-gradient(145deg, #64e8de, #64bbe8 31%, #4c5dda, #8a64e8);
     background-image: linear-gradient(305deg, #64e8de, #64bbe8 31%, #4c5dda, #8a64e8);
+    color: #ffffff;
 }
 
-.let-s-jam {
-    width: 190px;
-    height: 71px;
-    font-family: Oswald;
+#logo {
+    margin: 32px;
+}
+
+#atom {
+    margin: 32px;
+}
+
+.jam-title {
+    font-family: 'Oswald';
     font-size: 48px;
-    font-weight: normal;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: normal;
     letter-spacing: 2px;
-    text-align: center;
-    color: #ffffff;
+}
+
+.vert-spacer {
+    height:10vh;
 }
 
 .search-anything {
-    width: 470px;
-    height: 16px;
-    font-family: Roboto;
+    margin-top: 15px;
+    font-family: 'Roboto';
     font-size: 14px;
-    font-weight: normal;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: normal;
-    letter-spacing: normal;
-    text-align: center;
-    color: #ffffff;
 }
 
-.text-input-rectangle {
+.text-input {
+    margin-top:53px;
     width: 400px;
     height: 40px;
     border-radius: 4px;
@@ -41,16 +39,11 @@
 }
 
 .text-input-default {
-    width: 363px;
-    height: 30px;
     opacity: 0.8;
     font-family: Roboto;
     font-size: 14px;
-    font-weight: normal;
     font-style: italic;
-    font-stretch: normal;
     line-height: 2.14;
-    letter-spacing: normal;
     text-align: left;
     color: #ffffff;
     background-color: transparent;
@@ -60,6 +53,7 @@
 }
 
 .search-rectangle {
+    margin-top: 20px;
     width: 200px;
     height: 40px;
     border-radius: 100px;
@@ -72,17 +66,8 @@
     height: 100%;
     font-family: Roboto;
     font-size: 16px;
-    font-weight: 500;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: normal;
-    letter-spacing: normal;
-    text-align: center;
+    font-weight: bold;
     color: #3574bc;
     background-color: transparent;
     border-style: none;
-}
-
-input {
-    outline: none;
 }
