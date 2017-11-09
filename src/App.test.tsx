@@ -1,10 +1,10 @@
 import * as React from 'react';
 import App from './App';
-import { shallow } from 'enzyme';
+import { render } from 'enzyme';
 
 it('renders without crashing', () => {
-  const app = shallow(
+  const app = render(
     <App/>
   );
-  expect(app.text()).toContain("Welcome to Slichter's Jams");
+  expect(app.text()).toContain("LET'S JAM");
 });
