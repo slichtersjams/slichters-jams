@@ -1,20 +1,73 @@
 .App {
-  text-align: center;
+    height: 100vh;
+    background-image: -webkit-linear-gradient(145deg, #64e8de, #64bbe8 31%, #4c5dda, #8a64e8);
+    background-image: -o-linear-gradient(145deg, #64e8de, #64bbe8 31%, #4c5dda, #8a64e8);
+    background-image: linear-gradient(305deg, #64e8de, #64bbe8 31%, #4c5dda, #8a64e8);
+    color: #ffffff;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+#logo {
+    margin: 32px;
 }
 
-.App-header {
-  background-color: #222;
-  height: 180px;
-  padding: 20px;
-  color: white;
+#atom {
+    margin: 32px;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.jam-title {
+    font-family: 'Oswald';
+    font-size: 48px;
+    letter-spacing: 2px;
+}
+
+.vert-spacer {
+    height:10vh;
+}
+
+.search-anything {
+    margin-top: 15px;
+    font-family: 'Roboto';
+    font-size: 14px;
+}
+
+.text-input {
+    margin-top:53px;
+    width: 400px;
+    height: 40px;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.text-input-default {
+    opacity: 0.8;
+    font-family: Roboto;
+    font-size: 14px;
+    font-style: italic;
+    line-height: 2.14;
+    text-align: left;
+    color: #ffffff;
+    background-color: transparent;
+    border-style: none;
+    padding-left: 10px;
+    padding-top: 3px;
+}
+
+.search-rectangle {
+    margin-top: 20px;
+    width: 200px;
+    height: 40px;
+    border-radius: 100px;
+    background-color: #ffffff;
+    text-align: center;
+}
+
+.search-button {
+    width: 100%;
+    height: 100%;
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: bold;
+    color: #3574bc;
+    background-color: transparent;
+    border-style: none;
 }
