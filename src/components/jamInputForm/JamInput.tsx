@@ -14,7 +14,7 @@ export class JamInput extends React.Component<IJamInputProps, IJamInputState> {
   }
 
   public handleChange(event: ChangeEvent<HTMLInputElement>) {
-
+    this.setState({jamString: event.target.value})
   }
 
   public render() {

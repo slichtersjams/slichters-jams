@@ -20,6 +20,14 @@ describe('JamInput', () => {
       expect(onInputSpy.calledOnce).toBeTruthy();
       expect(onInputSpy.calledWith({target: {value: newValue}})).toBeTruthy();
     });
+
+    it('should update jamString on input change', () => {
+      const wrapper = enzyme.shallow(<JamInput defaultMessage='Enter a jam' />);
+
+      let newValue = 'My new value';
+      wrapper.find('input').simulate('change', {target: {value: newValue}});
+      expect(wrapper.instance().state.jamString).toEqual(newValue)
+    });
   });
 
   describe('Submit button', () => {
