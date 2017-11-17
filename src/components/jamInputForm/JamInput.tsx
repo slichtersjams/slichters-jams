@@ -21,7 +21,7 @@ export class JamInput extends React.Component<IJamInputProps, IJamInputState> {
     return (
       <div>
         <div className="text-input">
-          <input className="jamInput text-input-default" placeholder={this.state.jamString} onChange={e => this.handleChange(e)}/>
+          <input className="jamInput text-input-default" placeholder={this.props.defaultMessage} onChange={e => this.handleChange(e)}/>
         </div>
         <div className="search-rectangle">
           <button className="search-button" type="button" onClick={e => this.handleSubmit()}>Search</button>
