@@ -8,14 +8,6 @@ const logo = require('./img/logo.svg');
 const atom = require('./img/atom.png');
 
 class App extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      jamString: ''
-    };
-
-  };
-
   render() {
     return (
       <div className="App">
