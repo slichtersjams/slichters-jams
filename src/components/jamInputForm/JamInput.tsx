@@ -1,7 +1,7 @@
 ///<reference path="../../interfaces.d.ts"/>
 import * as React from 'react';
-import './JamInput.css';
 import { ChangeEvent } from 'react';
+
 
 export class JamInput extends React.Component<IJamInputProps, IJamInputState> {
   constructor(props: IJamInputProps) {
@@ -10,6 +10,7 @@ export class JamInput extends React.Component<IJamInputProps, IJamInputState> {
   }
 
   public handleSubmit() {
+    alert("Button clicked")
   }
 
   public handleChange(event: ChangeEvent<HTMLInputElement>) {
@@ -19,8 +20,12 @@ export class JamInput extends React.Component<IJamInputProps, IJamInputState> {
   public render() {
     return (
       <div>
-        <input className="jamInput" placeholder={this.state.jamString} onChange={e => this.handleChange(e)}/>
-        <button onClick={e => this.handleSubmit()}>Submit</button>
+        <div className="text-input">
+          <input className="jamInput text-input-default" placeholder={this.state.jamString} onChange={e => this.handleChange(e)}/>
+        </div>
+        <div className="search-rectangle">
+          <button className="search-button" type="button" onClick={e => this.handleSubmit()}>Search</button>
+        </div>
       </div>
     );
   }
