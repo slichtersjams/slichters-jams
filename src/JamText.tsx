@@ -6,10 +6,11 @@ export class JamText extends React.Component<IJamProps, IJamState> {
   constructor(props: IJamProps) {
     super(props);
     this.state = {jamText: ''};
+    this.newJam = this.newJam.bind(this);
   }
 
-  public componentDidMount() {
-    return fetch('https://slichters-jams.appspot.com').then((response: Response) => {
+  public newJam(jam: string) {
+    return fetch('https://slichters-jams.appspot.com/' + jam).then((response: Response) => {
       return response.text();
     }).then((value: string) => {
       this.setState({jamText: value});
@@ -20,9 +21,7 @@ export class JamText extends React.Component<IJamProps, IJamState> {
     return (
       <div>
         <div>
-          <JamInput defaultMessage="puppies" onSubmit={value => {
-            alert(value)
-          }}/>
+          <JamInput defaultMessage="puppies" onSubmit={this.newJam}/>
         </div>
         <div>
           <h3 className="jamText">{this.state.jamText}</h3>
