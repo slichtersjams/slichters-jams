@@ -1,8 +1,8 @@
 import * as React from 'react';
 import './App.css';
-import {JamText} from './JamText';
 import {Flex} from 'react-flex';
 import 'react-flex/index.css';
+import {JamInput} from "./components/jamInput/JamInput";
 
 const logo = require('./img/logo.svg');
 const atom = require('./img/atom.png');
@@ -32,7 +32,7 @@ class App extends React.Component {
             Search anything in the world and see if it’s jam-worthy according to Slichter.
           </div>
           <div>
-            <JamText/>
+            <JamInput defaultMessage="puppies" onSubmit={value => {}}/>
           </div>
         </Flex>
       </div>

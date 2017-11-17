@@ -5,11 +5,6 @@ interface IJamInputProps {
 
 interface IJamInputState {
   jamString: string;
+  jamText: string;
 }
 
-interface IJamProps {
-}
-
-interface IJamState {
-    jamText: string;
-}

@@ -6,11 +6,16 @@ import { ChangeEvent } from 'react';
 export class JamInput extends React.Component<IJamInputProps, IJamInputState> {
   constructor(props: IJamInputProps) {
     super(props);
-    this.state = {jamString: props.defaultMessage};
+    this.state = {jamString: props.defaultMessage, jamText: ''};
   }
 
   public handleSubmit() {
-    this.props.onSubmit(this.state.jamString);
+    return fetch('https://slichters-jams.appspot.com/?jamText=' + this.state.jamString).then((response: Response) => {
+      return response.text();
+    }).then((value: string) => {
+      this.setState({jamText: value});
+      this.props.onSubmit(this.state.jamString);
+    });
   }
 
   public handleChange(event: ChangeEvent<HTMLInputElement>) {
@@ -25,6 +30,9 @@ export class JamInput extends React.Component<IJamInputProps, IJamInputState> {
         </div>
         <div className="search-rectangle">
           <button className="search-button" type="button" onClick={e => this.handleSubmit()}>Search</button>
+        </div>
+        <div>
+          <h3 className="jamText">{this.state.jamText}</h3>
         </div>
       </div>
     );
