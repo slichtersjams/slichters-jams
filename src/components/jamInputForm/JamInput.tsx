@@ -10,7 +10,7 @@ export class JamInput extends React.Component<IJamInputProps, IJamInputState> {
   }
 
   public handleSubmit() {
-    alert("Button clicked")
+    this.props.onSubmit(this.state.jamString);
   }
 
   public handleChange(event: ChangeEvent<HTMLInputElement>) {
