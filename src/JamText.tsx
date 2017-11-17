@@ -10,7 +10,7 @@ export class JamText extends React.Component<IJamProps, IJamState> {
   }
 
   public newJam(jam: string) {
-    return fetch('https://slichters-jams.appspot.com/' + jam).then((response: Response) => {
+    return fetch('https://slichters-jams.appspot.com/?jamText=' + jam).then((response: Response) => {
       return response.text();
     }).then((value: string) => {
       this.setState({jamText: value});

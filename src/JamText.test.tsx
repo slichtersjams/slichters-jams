@@ -4,10 +4,10 @@ import * as fetchMock from 'fetch-mock';
 import {JamText} from './JamText';
 
 const mockJamResponse = 'Chunky Jam';
-const jamUrl = 'https://slichters-jams.appspot.com';
+const jamUrl = 'https://slichters-jams.appspot.com/?jamText=';
 
 it('should call api on jam change', async () => {
-  fetchMock.mock(jamUrl + '/chunky-jelly', {
+  fetchMock.mock(jamUrl + 'chunky-jelly', {
     body: 'Chunky Jam'
   });
   const jamTextWrapper = enzyme.shallow(<JamText/>);
