@@ -7,6 +7,10 @@ export class JamModal extends React.Component<IJamModalProps, IJamModalState> {
   }
 
   public render() {
+    if (!this.props.show) {
+      return null;
+    }
+
     return (
       <div>
         <img src={this.props.imgSrc} />

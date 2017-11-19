@@ -9,7 +9,8 @@ interface IJamInputState {
 }
 
 interface IJamModalProps {
-  imgSrc: string
+  show: boolean;
+  imgSrc: string;
 }
 
 interface IJamModalState {
