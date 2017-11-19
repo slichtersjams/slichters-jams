@@ -8,3 +8,10 @@ interface IJamInputState {
   jamText: string;
 }
 
+interface IJamModalProps {
+  imgSrc: string
+}
+
+interface IJamModalState {
+
+}
