@@ -54,11 +54,14 @@
 
 .search-rectangle {
     margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
     width: 200px;
     height: 40px;
     border-radius: 100px;
     background-color: #ffffff;
     text-align: center;
+    align-content: center;
 }
 
 .search-button {
@@ -70,4 +73,5 @@
     color: #3574bc;
     background-color: transparent;
     border-style: none;
+    margin: auto;
 }
