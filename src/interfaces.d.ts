@@ -1,6 +1,6 @@
 interface IJamInputProps {
   defaultMessage: string;
-  onSubmit: (jamString: string) => void
+  onSubmit: (jamString: string, jamResult: string) => void
 }
 
 interface IJamInputState {

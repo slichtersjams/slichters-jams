@@ -14,7 +14,7 @@ export class JamInput extends React.Component<IJamInputProps, IJamInputState> {
       return response.text();
     }).then((value: string) => {
       this.setState({jamText: value});
-      this.props.onSubmit(this.state.jamString);
+      this.props.onSubmit(this.state.jamString, this.state.jamText);
     });
   }
 
