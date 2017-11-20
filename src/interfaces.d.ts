@@ -1,6 +1,14 @@
+interface IAppProps {
+
+}
+
+interface IAppState {
+  showJamModal: boolean;
+}
+
 interface IJamInputProps {
   defaultMessage: string;
-  onSubmit: (jamString: string) => void
+  onSubmit: (jamString: string, jamResult: string) => void
 }
 
 interface IJamInputState {
@@ -8,3 +16,12 @@ interface IJamInputState {
   jamText: string;
 }
 
+interface IJamModalProps {
+  show: boolean;
+  imgSrc: string;
+  close: () => void;
+}
+
+interface IJamModalState {
+
+}
