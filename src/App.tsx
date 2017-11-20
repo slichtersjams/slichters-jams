@@ -3,11 +3,26 @@ import './App.css';
 import {Flex} from 'react-flex';
 import 'react-flex/index.css';
 import {JamInput} from "./components/jamInput/JamInput";
+// import {JamModal} from "./components/jamModal/jamModal";
 
 const logo = require('./img/logo.svg');
 const atom = require('./img/atom.png');
 
-class App extends React.Component {
+class App extends React.Component<IAppProps, IAppState> {
+  constructor() {
+    super();
+    this.state = {showJamModal: false};
+  }
+
+  public onJamChange(jam: string, jamResult: string) {
+    this.setState({showJamModal: true});
+  }
+
+  public toggleJamModal() {
+    const newState: boolean = !this.state.showJamModal;
+    this.setState({showJamModal: newState});
+  }
+
   render() {
     return (
       <div className="App">

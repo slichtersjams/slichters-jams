@@ -1,3 +1,11 @@
+interface IAppProps {
+
+}
+
+interface IAppState {
+  showJamModal: boolean;
+}
+
 interface IJamInputProps {
   defaultMessage: string;
   onSubmit: (jamString: string, jamResult: string) => void
