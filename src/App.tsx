@@ -1,8 +1,8 @@
 import * as React from 'react';
 import './App.css';
-import {Flex} from 'react-flex';
+import { Flex } from 'react-flex';
 import 'react-flex/index.css';
-import {JamInput} from "./components/jamInput/JamInput";
+import { JamInput } from './components/jamInput/JamInput';
 
 const logo = require('./img/logo.svg');
 const atom = require('./img/atom.png');
@@ -29,7 +29,7 @@ class App extends React.Component {
             LET'S JAM
           </div>
           <div className="search-anything">
-            Search anything in the world and see if it’s jam-worthy according to Slichter.
+            Search anything to test it’s JAM-worthiness. Go ahead—you know you want to.
           </div>
           <div>
             <JamInput defaultMessage="puppies" onSubmit={value => {}}/>
