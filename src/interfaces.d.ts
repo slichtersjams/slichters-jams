@@ -4,6 +4,7 @@ interface IAppProps {
 
 interface IAppState {
   showJamModal: boolean;
+  currentJamImg: string;
 }
 
 interface IJamInputProps {

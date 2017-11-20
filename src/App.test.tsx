@@ -19,6 +19,17 @@ describe('onJamChange', () => {
 
     expect(instance.state.showJamModal).toEqual(true);
   });
+
+  it('should store the jam image', () => {
+    const wrapper = enzyme.shallow(<App/>);
+    let instance: any | undefined;
+    instance = wrapper.instance();
+    const jamImg = 'http://somegif.com';
+    instance.onJamChange('', '', jamImg);
+
+    expect(instance.state.currentJamImg).toEqual(jamImg);
+
+  })
 });
 
 describe('toggleJamModal', () => {

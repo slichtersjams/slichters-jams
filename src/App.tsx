@@ -8,18 +8,17 @@ import { JamModal } from './components/jamModal/jamModal';
 const logo = require('./img/logo.svg');
 const atom = require('./img/atom.png');
 
-const dummyGif = 'https://media0.giphy.com/media/3otPovEi2MtN9pEJuo/giphy.gif';
-
 class App extends React.Component<IAppProps, IAppState> {
   constructor() {
     super();
-    this.state = {showJamModal: false};
+    this.state = {showJamModal: false, currentJamImg: ''};
     this.onJamChange = this.onJamChange.bind(this);
     this.toggleJamModal = this.toggleJamModal.bind(this);
   }
 
-  public onJamChange(jam: string, jamResult: string) {
+  public onJamChange(jam: string, jamResult: string, jamGif: string) {
     this.setState({showJamModal: true});
+    this.setState({currentJamImg: jamGif});
   }
 
   public toggleJamModal() {
@@ -53,7 +52,7 @@ class App extends React.Component<IAppProps, IAppState> {
           <div>
             <JamInput defaultMessage="puppies" onSubmit={this.onJamChange}/>
           </div>
-          <JamModal show={this.state.showJamModal} imgSrc={dummyGif} close={this.toggleJamModal}/>
+          <JamModal show={this.state.showJamModal} imgSrc={this.state.currentJamImg} close={this.toggleJamModal}/>
         </Flex>
       </div>
     );
