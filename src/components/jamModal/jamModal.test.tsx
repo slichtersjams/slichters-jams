@@ -11,17 +11,16 @@ describe('jamModal', () => {
 
   it('should not render when show is false', () => {
     const wrapper = enzyme.shallow(<JamModal show={false} imgSrc={''} close={() => {}}/>);
-    // const component = ReactDOM.findDOMNode(wrapper.instance());
     expect(wrapper.instance().render()).toBe(null);
   });
 
   it('should call close callback prop when clicked', () => {
-    let got_called = false;
+    let gotCalled = false;
     const wrapper = enzyme.shallow(<JamModal show={true} imgSrc={''} close={() => {
-      got_called = true;}
+      gotCalled = true;}
     }/>);
 
     wrapper.find('.backdrop').simulate( 'click');
-    expect(got_called).toBe(true);
+    expect(gotCalled).toBe(true);
   });
 });

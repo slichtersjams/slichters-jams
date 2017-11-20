@@ -36,16 +36,16 @@ describe('JamInput', () => {
     });
 
     it('should call onSubmit callback prop when button is clicked', async () => {
-      let actual_jam = 'not called';
-      let actual_result = 'not called';
+      let actualJam = 'not called';
+      let actualResult = 'not called';
       const wrapper = enzyme.shallow(<JamInput defaultMessage='chunky-jelly' onSubmit={((jam, result) => {
-        actual_jam = jam;
-        actual_result = result;
+        actualJam = jam;
+        actualResult = result;
       })} />);
       wrapper.find('button').simulate( 'click');
       await flushPromises();
-      expect(actual_jam).toEqual('chunky-jelly');
-      expect(actual_result).toEqual(mockJamResponse);
+      expect(actualJam).toEqual('chunky-jelly');
+      expect(actualResult).toEqual(mockJamResponse);
     });
 
     it('should update jam text with api response', async () => {
