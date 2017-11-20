@@ -1,12 +1,14 @@
 import * as React from 'react';
 import './App.css';
-import {Flex} from 'react-flex';
+import { Flex } from 'react-flex';
 import 'react-flex/index.css';
-import {JamInput} from "./components/jamInput/JamInput";
-import {JamModal} from "./components/jamModal/jamModal";
+import { JamInput } from './components/jamInput/JamInput';
+import { JamModal } from './components/jamModal/jamModal';
 
 const logo = require('./img/logo.svg');
 const atom = require('./img/atom.png');
+
+const dummyGif = 'https://media0.giphy.com/media/3otPovEi2MtN9pEJuo/giphy.gif';
 
 class App extends React.Component<IAppProps, IAppState> {
   constructor() {
@@ -51,7 +53,7 @@ class App extends React.Component<IAppProps, IAppState> {
           <div>
             <JamInput defaultMessage="puppies" onSubmit={this.onJamChange}/>
           </div>
-          <JamModal show={this.state.showJamModal} imgSrc="https://media0.giphy.com/media/3otPovEi2MtN9pEJuo/giphy.gif" close={this.toggleJamModal}/>
+          <JamModal show={this.state.showJamModal} imgSrc={dummyGif} close={this.toggleJamModal}/>
         </Flex>
       </div>
     );

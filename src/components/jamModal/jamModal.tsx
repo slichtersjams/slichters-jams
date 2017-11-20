@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react';
 import './jamModal.css';
 
 export class JamModal extends React.Component<IJamModalProps, IJamModalState> {
@@ -22,6 +22,6 @@ export class JamModal extends React.Component<IJamModalProps, IJamModalState> {
           <img src={this.props.imgSrc} />
         </div>
       </div>
-    )
+    );
   }
 }
