@@ -16,10 +16,7 @@ export class JamInput extends React.Component<IJamInputProps, IJamInputState> {
       return response.text();
     }).then((value: string) => {
       this.setState({jamText: value});
-      let jamImg: string = notJamGif;
-      if(this.state.jamText == 'Jam!') {
-        jamImg = jamGif
-      }
+      let jamImg: string = this.state.jamText == 'Jam!' ? jamGif: notJamGif;
       this.props.onSubmit(this.state.jamString, this.state.jamText, jamImg);
     });
   }
