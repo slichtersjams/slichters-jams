@@ -24,10 +24,11 @@ describe('JamInput', () => {
   });
 
   describe('Submit button', () => {
-    const mockJamResponse = 'Chunky Jam';
+    const mockJamResponse = 'Jam!';
     const jamUrl = 'https://slichters-jams.appspot.com/?jamText=';
+    const jamGif = 'https://media.giphy.com/media/d1ELBcZCFmuWs/giphy.gif';
     fetchMock.mock(jamUrl + 'chunky-jelly', {
-      body: 'Chunky Jam'
+      body: mockJamResponse
     });
 
     it('should render the submit button', () => {
@@ -38,14 +39,17 @@ describe('JamInput', () => {
     it('should call onSubmit callback prop when button is clicked', async () => {
       let actualJam = 'not called';
       let actualResult = 'not called';
-      const wrapper = enzyme.shallow(<JamInput defaultMessage='chunky-jelly' onSubmit={((jam, result) => {
+      let actualImg = 'not called';
+      const wrapper = enzyme.shallow(<JamInput defaultMessage='chunky-jelly' onSubmit={((jam, result, img) => {
         actualJam = jam;
         actualResult = result;
+        actualImg = img;
       })} />);
       wrapper.find('button').simulate( 'click');
       await flushPromises();
       expect(actualJam).toEqual('chunky-jelly');
       expect(actualResult).toEqual(mockJamResponse);
+      expect(actualImg).toEqual(jamGif);
     });
 
     it('should update jam text with api response', async () => {

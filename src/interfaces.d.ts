@@ -8,7 +8,7 @@ interface IAppState {
 
 interface IJamInputProps {
   defaultMessage: string;
-  onSubmit: (jamString: string, jamResult: string) => void
+  onSubmit: (jamString: string, jamResult: string, jamImg: string) => void
 }
 
 interface IJamInputState {

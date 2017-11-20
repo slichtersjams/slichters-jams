@@ -2,6 +2,8 @@
 import * as React from 'react';
 import { ChangeEvent } from 'react';
 
+const jamGif = 'https://media.giphy.com/media/d1ELBcZCFmuWs/giphy.gif';
+
 export class JamInput extends React.Component<IJamInputProps, IJamInputState> {
   constructor(props: IJamInputProps) {
     super(props);
@@ -13,7 +15,7 @@ export class JamInput extends React.Component<IJamInputProps, IJamInputState> {
       return response.text();
     }).then((value: string) => {
       this.setState({jamText: value});
-      this.props.onSubmit(this.state.jamString, this.state.jamText);
+      this.props.onSubmit(this.state.jamString, this.state.jamText, jamGif);
     });
   }
 
