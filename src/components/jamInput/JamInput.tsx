@@ -2,7 +2,6 @@
 import * as React from 'react';
 import { ChangeEvent } from 'react';
 
-
 export class JamInput extends React.Component<IJamInputProps, IJamInputState> {
   constructor(props: IJamInputProps) {
     super(props);
@@ -19,7 +18,7 @@ export class JamInput extends React.Component<IJamInputProps, IJamInputState> {
   }
 
   public handleChange(event: ChangeEvent<HTMLInputElement>) {
-    this.setState({jamString: event.target.value})
+    this.setState({jamString: event.target.value});
   }
 
   public render() {
