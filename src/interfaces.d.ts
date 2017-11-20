@@ -11,6 +11,7 @@ interface IJamInputState {
 interface IJamModalProps {
   show: boolean;
   imgSrc: string;
+  close: () => void;
 }
 
 interface IJamModalState {
