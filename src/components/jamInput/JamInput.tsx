@@ -1,6 +1,6 @@
 ///<reference path="../../interfaces.d.ts"/>
 import * as React from 'react';
-import { ChangeEvent } from 'react';
+import { ChangeEvent, KeyboardEvent} from 'react';
 
 const jamGif = 'https://media.giphy.com/media/d1ELBcZCFmuWs/giphy.gif';
 const notJamGif = 'https://media1.giphy.com/media/fvLv9Y62uye2Y/giphy.gif';
@@ -32,6 +32,12 @@ export class JamInput extends React.Component<IJamInputProps, IJamInputState> {
     this.setState({jamString: event.target.value});
   }
 
+  public handleKeyUp(event: KeyboardEvent<HTMLInputElement>) {
+    if( event.key === 'Enter') {
+      this.handleSubmit();
+    }
+  }
+
   public render() {
     return (
       <div>
@@ -40,6 +46,7 @@ export class JamInput extends React.Component<IJamInputProps, IJamInputState> {
             className="jamInput text-input-default"
             placeholder={this.props.defaultMessage}
             onChange={(e: ChangeEvent<HTMLInputElement>) => this.handleChange(e)}
+            onKeyUp={(e: KeyboardEvent<HTMLInputElement>) => this.handleKeyUp(e)}
           />
         </div>
         <div className="search-rectangle">

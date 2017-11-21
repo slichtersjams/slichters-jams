@@ -23,6 +23,17 @@ describe('JamInput', () => {
       wrapper.find('input').simulate('change', {target: {value: newValue}});
       expect(wrapper.instance().state.jamString).toEqual(newValue)
     });
+
+    it('should call onSubmit callback prop when enter is pressed', async () => {
+      let actualJam = 'not called';
+      const wrapper = enzyme.shallow(<JamInput defaultMessage='chunky-jelly' onSubmit={((jam, result, img) => {
+        actualJam = jam;
+      })}/>);
+      wrapper.find('input').simulate('keyUp', {key: 'Enter', keyCode: 13});
+      await flushPromises();
+      expect(actualJam).toEqual('chunky-jelly');
+    });
+
   });
 
   describe('Submit button', () => {
