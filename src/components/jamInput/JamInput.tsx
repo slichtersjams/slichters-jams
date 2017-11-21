@@ -4,6 +4,7 @@ import { ChangeEvent } from 'react';
 
 const jamGif = 'https://media.giphy.com/media/d1ELBcZCFmuWs/giphy.gif';
 const notJamGif = 'https://media1.giphy.com/media/fvLv9Y62uye2Y/giphy.gif';
+const missingGif = 'https://media3.giphy.com/media/xT0BKmtQGLbumr5RCM/giphy.gif';
 
 export class JamInput extends React.Component<IJamInputProps, IJamInputState> {
   constructor(props: IJamInputProps) {
@@ -16,7 +17,14 @@ export class JamInput extends React.Component<IJamInputProps, IJamInputState> {
       return response.text();
     }).then((value: string) => {
       this.setState({jamText: value});
-      let jamImg: string = this.state.jamText == 'Jam!' ? jamGif: notJamGif;
+      let jamImg: string = missingGif;
+
+      if (this.state.jamText === 'Jam!') {
+        jamImg = jamGif;
+      }
+      else if (this.state.jamText === 'Not a Jam!') {
+        jamImg = notJamGif;
+      }
       this.props.onSubmit(this.state.jamString, this.state.jamText, jamImg);
     });
   }
