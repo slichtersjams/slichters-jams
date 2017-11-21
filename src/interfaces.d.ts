@@ -20,6 +20,7 @@ interface IJamInputState {
 interface IJamModalProps {
   show: boolean;
   imgSrc: string;
+  jamText: string;
   close: () => void;
 }
 
