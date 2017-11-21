@@ -1,6 +1,6 @@
 ///<reference path="../../interfaces.d.ts"/>
 import * as React from 'react';
-import { ChangeEvent, KeyboardEvent} from 'react';
+import { ChangeEvent, KeyboardEvent } from 'react';
 
 const jamGif = 'https://media.giphy.com/media/d1ELBcZCFmuWs/giphy.gif';
 const notJamGif = 'https://media1.giphy.com/media/fvLv9Y62uye2Y/giphy.gif';
@@ -20,8 +20,7 @@ export class JamInput extends React.Component<IJamInputProps, IJamInputState> {
 
       if (value === 'Jam!') {
         jamImg = jamGif;
-      }
-      else if (value === 'Not a Jam!') {
+      } else if (value === 'Not a Jam!') {
         jamImg = notJamGif;
       }
       this.props.onSubmit(this.state.jamString, value, jamImg);
@@ -33,7 +32,7 @@ export class JamInput extends React.Component<IJamInputProps, IJamInputState> {
   }
 
   public handleKeyUp(event: KeyboardEvent<HTMLInputElement>) {
-    if( event.key === 'Enter') {
+    if ( event.key === 'Enter' ) {
       this.handleSubmit();
     }
   }
