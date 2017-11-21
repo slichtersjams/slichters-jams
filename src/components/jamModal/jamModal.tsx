@@ -16,6 +16,7 @@ export class JamModal extends React.Component<IJamModalProps, IJamModalState> {
       <div className="backdrop" onClick={e => this.props.close()}>
         <div className="modal">
           <img src={this.props.imgSrc} height="275" />
+          <h3 className="jam-text">INSERT JAM TEXT HERE</h3>
         </div>
       </div>
     );
