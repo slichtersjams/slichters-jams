@@ -15,7 +15,6 @@ interface IJamInputProps {
 
 interface IJamInputState {
   jamString: string;
-  jamText: string;
 }
 
 interface IJamModalProps {

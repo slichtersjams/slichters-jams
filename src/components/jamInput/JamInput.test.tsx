@@ -71,18 +71,6 @@ describe('JamInput', () => {
       expect(actualImg).toEqual(notJamGif);
     });
 
-    it('should update jam text with api response', async () => {
-      const jamInput = enzyme.shallow(<JamInput defaultMessage='chunky-jelly' onSubmit={(value => {
-      })}/>);
-
-      let instance: any | undefined;
-      instance = jamInput.instance();
-
-      await instance.handleSubmit();
-      expect(jamInput.find('.jamText').text()).toEqual(mockJamResponse);
-    });
-
-
     it('should select a gif for missing jam', async () => {
       fetchMock.mock(jamUrl + 'missing-jam', {
         body: 'Bad Request'

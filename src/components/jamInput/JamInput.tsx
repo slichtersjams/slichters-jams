@@ -9,23 +9,22 @@ const missingGif = 'https://media3.giphy.com/media/xT0BKmtQGLbumr5RCM/giphy.gif'
 export class JamInput extends React.Component<IJamInputProps, IJamInputState> {
   constructor(props: IJamInputProps) {
     super(props);
-    this.state = {jamString: props.defaultMessage, jamText: ''};
+    this.state = {jamString: props.defaultMessage};
   }
 
   public handleSubmit() {
     return fetch('https://slichters-jams.appspot.com/?jamText=' + this.state.jamString).then((response: Response) => {
       return response.text();
     }).then((value: string) => {
-      this.setState({jamText: value});
       let jamImg: string = missingGif;
 
-      if (this.state.jamText === 'Jam!') {
+      if (value === 'Jam!') {
         jamImg = jamGif;
       }
-      else if (this.state.jamText === 'Not a Jam!') {
+      else if (value === 'Not a Jam!') {
         jamImg = notJamGif;
       }
-      this.props.onSubmit(this.state.jamString, this.state.jamText, jamImg);
+      this.props.onSubmit(this.state.jamString, value, jamImg);
     });
   }
 
@@ -45,9 +44,6 @@ export class JamInput extends React.Component<IJamInputProps, IJamInputState> {
         </div>
         <div className="search-rectangle">
           <button className="search-button" type="button" onClick={e => this.handleSubmit()}>Search</button>
-        </div>
-        <div>
-          <h3 className="jamText">{this.state.jamText}</h3>
         </div>
       </div>
     );
