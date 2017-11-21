@@ -11,14 +11,17 @@ const atom = require('./img/atom.png');
 class App extends React.Component<IAppProps, IAppState> {
   constructor() {
     super();
-    this.state = {showJamModal: false, currentJamImg: ''};
+    this.state = {
+      showJamModal: false,
+      currentJamImg: '',
+      currentJamText: ''
+    };
     this.onJamChange = this.onJamChange.bind(this);
     this.toggleJamModal = this.toggleJamModal.bind(this);
   }
 
   public onJamChange(jam: string, jamResult: string, jamGif: string) {
-    this.setState({showJamModal: true});
-    this.setState({currentJamImg: jamGif});
+    this.setState({showJamModal: true, currentJamText: jamResult, currentJamImg: jamGif});
   }
 
   public toggleJamModal() {
@@ -52,7 +55,12 @@ class App extends React.Component<IAppProps, IAppState> {
           <div>
             <JamInput defaultMessage="puppies" onSubmit={this.onJamChange}/>
           </div>
-          <JamModal show={this.state.showJamModal} imgSrc={this.state.currentJamImg} close={this.toggleJamModal}/>
+          <JamModal
+            show={this.state.showJamModal}
+            jamText={this.state.currentJamText}
+            imgSrc={this.state.currentJamImg}
+            close={this.toggleJamModal}
+          />
         </Flex>
       </div>
     );

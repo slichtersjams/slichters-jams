@@ -30,6 +30,17 @@ describe('onJamChange', () => {
     expect(instance.state.currentJamImg).toEqual(jamImg);
 
   })
+
+  it('should store the jam text', () => {
+    const wrapper = enzyme.shallow(<App/>);
+    let instance: any | undefined;
+    instance = wrapper.instance();
+    const jamText = 'Not a jam';
+    instance.onJamChange('', jamText, '');
+
+    expect(instance.state.currentJamText).toEqual(jamText);
+
+  })
 });
 
 describe('toggleJamModal', () => {
