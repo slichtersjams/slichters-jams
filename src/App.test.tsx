@@ -19,6 +19,28 @@ describe('onJamChange', () => {
 
     expect(instance.state.showJamModal).toEqual(true);
   });
+
+  it('should store the jam image', () => {
+    const wrapper = enzyme.shallow(<App/>);
+    let instance: any | undefined;
+    instance = wrapper.instance();
+    const jamImg = 'http://somegif.com';
+    instance.onJamChange('', '', jamImg);
+
+    expect(instance.state.currentJamImg).toEqual(jamImg);
+
+  })
+
+  it('should store the jam text', () => {
+    const wrapper = enzyme.shallow(<App/>);
+    let instance: any | undefined;
+    instance = wrapper.instance();
+    const jamText = 'Not a jam';
+    instance.onJamChange('', jamText, '');
+
+    expect(instance.state.currentJamText).toEqual(jamText);
+
+  })
 });
 
 describe('toggleJamModal', () => {

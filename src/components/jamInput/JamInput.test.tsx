@@ -10,54 +10,92 @@ function flushPromises() {
 describe('JamInput', () => {
   describe('TextInput', () => {
     it('should set jam input string to default message', () => {
-      const inputBox = enzyme.shallow(<JamInput defaultMessage='Enter a jam' onSubmit={(value => {})}/>);
+      const inputBox = enzyme.shallow(<JamInput defaultMessage='Enter a jam' onSubmit={(value => {
+      })}/>);
       expect(inputBox.find(".jamInput").prop("placeholder")).toEqual('Enter a jam')
     });
 
     it('should update jamString on input change', () => {
-      const wrapper = enzyme.shallow(<JamInput defaultMessage='Enter a jam' onSubmit={(value => {})} />);
+      const wrapper = enzyme.shallow(<JamInput defaultMessage='Enter a jam' onSubmit={(value => {
+      })}/>);
 
       let newValue = 'My new value';
       wrapper.find('input').simulate('change', {target: {value: newValue}});
       expect(wrapper.instance().state.jamString).toEqual(newValue)
     });
+
+    it('should call onSubmit callback prop when enter is pressed', async () => {
+      let actualJam = 'not called';
+      const wrapper = enzyme.shallow(<JamInput defaultMessage='chunky-jelly' onSubmit={((jam, result, img) => {
+        actualJam = jam;
+      })}/>);
+      wrapper.find('input').simulate('keyUp', {key: 'Enter', keyCode: 13});
+      await flushPromises();
+      expect(actualJam).toEqual('chunky-jelly');
+    });
+
   });
 
   describe('Submit button', () => {
-    const mockJamResponse = 'Chunky Jam';
+    const mockJamResponse = 'Jam!';
     const jamUrl = 'https://slichters-jams.appspot.com/?jamText=';
+    const jamGif = 'https://media.giphy.com/media/d1ELBcZCFmuWs/giphy.gif';
+    const missingGif = 'https://media3.giphy.com/media/xT0BKmtQGLbumr5RCM/giphy.gif';
+    const notJamGif = 'https://media1.giphy.com/media/fvLv9Y62uye2Y/giphy.gif';
     fetchMock.mock(jamUrl + 'chunky-jelly', {
-      body: 'Chunky Jam'
+      body: mockJamResponse
     });
 
     it('should render the submit button', () => {
-      const jamInput = enzyme.shallow(<JamInput defaultMessage='Enter a jam' onSubmit={(value => {})} />);
+      const jamInput = enzyme.shallow(<JamInput defaultMessage='Enter a jam' onSubmit={(value => {
+      })}/>);
       expect(jamInput.find('button').length).toEqual(1);
     });
 
     it('should call onSubmit callback prop when button is clicked', async () => {
       let actualJam = 'not called';
       let actualResult = 'not called';
-      const wrapper = enzyme.shallow(<JamInput defaultMessage='chunky-jelly' onSubmit={((jam, result) => {
+      let actualImg = 'not called';
+      const wrapper = enzyme.shallow(<JamInput defaultMessage='chunky-jelly' onSubmit={((jam, result, img) => {
         actualJam = jam;
         actualResult = result;
-      })} />);
-      wrapper.find('button').simulate( 'click');
+        actualImg = img;
+      })}/>);
+      wrapper.find('button').simulate('click');
       await flushPromises();
       expect(actualJam).toEqual('chunky-jelly');
       expect(actualResult).toEqual(mockJamResponse);
+      expect(actualImg).toEqual(jamGif);
     });
 
-    it('should update jam text with api response', async () => {
-        const jamInput = enzyme.shallow(<JamInput defaultMessage='chunky-jelly' onSubmit={(value => {})} />);
-
-        // --strictNullChecks.... got heem!
-        let instance: any | undefined;
-        instance = jamInput.instance();
-
-        await instance.handleSubmit();
-        expect(jamInput.find('.jamText').text()).toEqual(mockJamResponse);
+    it('should select gif for not jam', async () => {
+      fetchMock.mock(jamUrl + 'chunky-jam', {
+        body: 'Not a Jam!'
       });
+
+      let actualImg = 'not called';
+      const wrapper = enzyme.shallow(<JamInput defaultMessage='chunky-jam' onSubmit={((jam, result, img) => {
+        actualImg = img;
+      })}/>);
+      wrapper.find('button').simulate('click');
+      await flushPromises();
+      expect(actualImg).toEqual(notJamGif);
+    });
+
+    it('should select a gif for missing jam', async () => {
+      fetchMock.mock(jamUrl + 'missing-jam', {
+        body: 'Bad Request'
+      });
+      let actualImg = 'not called';
+      const wrapper = enzyme.shallow(<JamInput defaultMessage='missing-jam' onSubmit={(jam, result, img) => {
+        actualImg = img;
+      }}/>);
+
+      wrapper.find('button').simulate('click');
+      await flushPromises();
+      expect(actualImg).toEqual(missingGif);
+    });
+
   });
 });
 
