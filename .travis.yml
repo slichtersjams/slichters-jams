@@ -34,4 +34,4 @@ deploy:
   provider: script
   script: sh scripts/deploy.sh $TRAVIS_BRANCH
   on:
-    all_branches: true
+    branch: master
