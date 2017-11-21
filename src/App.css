@@ -43,13 +43,14 @@
     font-family: Roboto;
     font-size: 14px;
     font-style: italic;
-    line-height: 2.14;
+    line-height: 2.5;
     text-align: left;
     color: #ffffff;
     background-color: transparent;
     border-style: none;
     padding-left: 10px;
     padding-top: 3px;
+    width: 97%;
 }
 
 .search-rectangle {
