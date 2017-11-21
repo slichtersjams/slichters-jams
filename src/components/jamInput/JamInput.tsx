@@ -4,6 +4,12 @@ import { ChangeEvent, KeyboardEvent } from 'react';
 
 const missingGif = 'https://media3.giphy.com/media/xT0BKmtQGLbumr5RCM/giphy.gif';
 
+export class JamApiResponse {
+  public JamText: string;
+  public JamGif: string;
+  public JamState: boolean;
+}
+
 export class JamInput extends React.Component<IJamInputProps, IJamInputState> {
   constructor(props: IJamInputProps) {
     super(props);
@@ -12,11 +18,11 @@ export class JamInput extends React.Component<IJamInputProps, IJamInputState> {
 
   public handleSubmit() {
     return fetch('https://slichters-jams.appspot.com/?jamText=' + this.state.jamString).then((response: Response) => {
-      if (response.status != 200) {
-        return new Promise((resolve, reject) => { resolve({JamText:'Bad Request', JamGif: missingGif})})
+      if (response.status !== 200) {
+        return new Promise((resolve, reject) => { resolve( {JamText: 'Bad Request', JamGif: missingGif} ); });
       }
       return response.json();
-    }).then((value: any) => {
+    }).then((value: JamApiResponse) => {
       this.props.onSubmit(this.state.jamString, value.JamText, value.JamGif);
     });
   }
